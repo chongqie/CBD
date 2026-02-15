@@ -206,13 +206,17 @@ Here, $y_0^i \in \mathcal{V}$ is the original token, $y_t^i \in \mathcal{V} \cup
 **Structure-Guided Denoising.**
 We use a neural network $f_\theta(y_t, x, s)$ to parameterize the conditional reverse distribution. Training maximizes the Evidence Lower Bound (ELBO), which under discrete masking diffusion reduces to minimizing cross-entropy over masked tokens at each step:
 
-$$\mathcal{L}_{\text{diff}}=
-\mathbb{E}_{t,\, y_0}
-\left[
-\sum_{i \in \mathcal{M}_t}
-- \log p_\theta\!\left(y_0^i \mid y_t, x, s\right)
-\right],
+
 $$
+\mathcal{L} _ {\text{diff}} =
+\mathbb{E} _ {t,\, y_0}
+\left[
+\sum _ {i \in \mathcal{M} _ t}
+- \log p _ \theta\!\left(y_0 ^ i \mid y_t, x, s\right)
+\right]
+$$
+
+
 
 where $t$ is a uniformly sampled diffusion step, $y_0$ is the ground-truth sequence, and $\mathcal{M}_t = \{ i \mid y_t^i = \texttt{[MASK]} \}$ are the masked positions. The conditional $p_\theta(y_0^i \mid y_t, x, s)$, predicted independently at each masked token, is parameterized by the denoising network.
 
