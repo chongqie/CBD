@@ -79,7 +79,8 @@ accelerate launch /path/to/lm-evaluation-harness/lm_eval/__main__.py \
 
 ### Example Output
 
-![[fig3.png]]
+![demo](fig3.png)
+
 
 
 
@@ -150,7 +151,8 @@ Summary of hyperparameters used for Qwen and LLaDA models.
 
 ### **Algorithms and Methodology** 
 
-![[fig2.png]]
+![demo](fig2.png)
+
 
 #### Training Data Preparation
 
@@ -158,7 +160,8 @@ To preserve general reasoning ability and promote cross-task generalization, we 
 
 For training data construction, we build a structured, coarse-grained reasoning skeleton $s$ for each instance, serving as the explicit latent plan. Each skeleton contains: (1) a high-level summary capturing the global logical structure, and (2) a sequence of coarse-grained reasoning steps specifying the semantic content and ordering of parallelizable sub-units. We use GPT-4o to generate the structured summaries and steps conditioned on the input question, and validate them with GPT-4o mini to ensure logical consistency. The final training sample is represented as an $(x, s, y)$ triplet, where $x$ is the question, $s$ the reasoning skeleton, and $y$ the target answer. 
 
-![[fig4.png]]
+![demo](fig4.png)
+
 
 #### Problem Formulation: The Hybrid Generative Paradigm
 
