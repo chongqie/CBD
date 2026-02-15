@@ -4,7 +4,7 @@
 
 ### **Introduction**
 
-Recent advancements in Large Language Models (LLMs) have demonstrated emergent intelligence in complex reasoning tasks, particularly in mathematical problem-solving and logical deduction. The prevailing paradigm primarily relies on Autoregressive (AR) architectures, which decompose complex queries into intermediate reasoning steps via Chain-of-Thought (CoT) reasoning. However, AR models are inherently constrained by strictly sequential decoding, where inference latency scales linearly with sequence length ($\mathcal{O}(N)$). In scenarios requiring long reasoning chains or high-concurrency deployment, this inefficiency constitutes a severe computational bottleneck.
+Recent advancements in Large Language Models (LLMs) have demonstrated emergent intelligence in complex reasoning tasks, particularly in mathematical problem-solving and logical deduction. The prevailing paradigm primarily relies on Autoregressive (AR) architectures, which decompose complex queries into intermediate reasoning steps via Chain-of-Thought (CoT) reasoning. However, AR models are inherently constrained by strictly sequential decoding, where inference latency scales linearly with sequence length ($`\mathcal{O}(N)`$). In scenarios requiring long reasoning chains or high-concurrency deployment, this inefficiency constitutes a severe computational bottleneck.
 
 To overcome the limitations of serial generation, discrete diffusion language models have attracted increasing attention due to their intrinsic capacity for parallel computation. By formulating generation as an iterative denoising procedure, diffusion models theoretically permit constant numbers of generation steps. However, existing pure diffusion approaches exhibit substantial difficulty in modeling long range dependencies and complex logical structures. In the absence of explicit causal masking, these models often fail to enforce coherent global semantic planning, which results in logical inconsistencies or hallucinated content. Such shortcomings make them markedly less effective than autoregressive models on precision critical tasks, especially mathematical reasoning.
 
@@ -28,6 +28,7 @@ Our main contributions are summarized as follows:
 
 ### **Code Structure**
 
+```
 Root Directory
 ├──  qwen_batch/                    # Qwen Batch Processing Module
 │   ├── draft_generate_args.py     # Draft Generation Parameters Script
@@ -41,6 +42,7 @@ Root Directory
 ├── generate.py                    # Text Generation Script
 ├── generate_parallel.py           # Parallel Text Generation Script
 └── readme.md                      # Project Documentation
+```
 
 ## Usage
 
@@ -235,7 +237,7 @@ s_{gt} & \Pr = 1 - \gamma_1 - \gamma_2 - p_{\text{drop}},\\
 \end{cases}
 $$
 
-Here, $s_{gt}$ is the ground-truth skeleton, $\hat{s}_{\text{AR}}(x)$ is an autoregressive skeleton, and $` \text{Perturb}(s_{gt}, \epsilon) `$ introduces stochastic modifications (token dropping, reordering, partial removal) controlled by $\epsilon$. The hyperparameters $$` \gamma_1, \gamma_2, p_{\text{drop}} \in [0,1] `$ govern the mixture, with $\gamma_1 + \gamma_2 + p_{\text{drop}} \leq 1$.
+Here, $s_{gt}$ is the ground-truth skeleton, $\hat{s}_{\text{AR}}(x)$ is an autoregressive skeleton, and $` \text{Perturb}(s_{gt}, \epsilon) `$ introduces stochastic modifications (token dropping, reordering, partial removal) controlled by $\epsilon$. The hyperparameters $$` \gamma_1, \gamma_2, p_{\text{drop}} \in [0,1] `$ govern the mixture, with $` \gamma_1 + \gamma_2 + p_{\text{drop}} \leq 1 `$.
 
 By combining perturbation with Drop-AR, the diffusion decoder learns to reconstruct coherent reasoning from noisy or missing skeletons, improving robustness and enabling active correction of structural inconsistencies during inference.
 
@@ -281,7 +283,7 @@ CBD inference consists of two stages:
 1. Draft-Based Mask Construction  
 2. Parallel Block-Wise Diffusion Decoding 
 
-**Stage 1: Draft-Based Mask Construction
+**Stage 1: Draft-Based Mask Construction**
 
 We convert structured reasoning steps into masked semantic blocks.
 
@@ -305,7 +307,7 @@ semantic_block_lengths
 
 
 
-**Stage 2: Parallel Block Diffusion Decoding with Stochastic Confidence Selection
+**Stage 2: Parallel Block Diffusion Decoding with Stochastic Confidence Selection**
 
 ```
 Input:
