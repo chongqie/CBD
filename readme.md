@@ -235,7 +235,7 @@ s_{gt} & \Pr = 1 - \gamma_1 - \gamma_2 - p_{\text{drop}},\\
 \end{cases}
 $$
 
-Here, $s_{gt}$ is the ground-truth skeleton, $\hat{s}_{\text{AR}}(x)$ is an autoregressive skeleton, and $\text{Perturb}(s_{gt}, \epsilon)$ introduces stochastic modifications (token dropping, reordering, partial removal) controlled by $\epsilon$. The hyperparameters $\gamma_1$, $\gamma_2$, $p_{\text{drop}} \in [0,1]$ govern the mixture, with $\gamma_1 + \gamma_2 + p_{\text{drop}} \leq 1$.
+Here, $s_{gt}$ is the ground-truth skeleton, $\hat{s}_{\text{AR}}(x)$ is an autoregressive skeleton, and $` \text{Perturb}(s_{gt}, \epsilon) `$ introduces stochastic modifications (token dropping, reordering, partial removal) controlled by $\epsilon$. The hyperparameters $$` \gamma_1, \gamma_2, p_{\text{drop}} \in [0,1] `$ govern the mixture, with $\gamma_1 + \gamma_2 + p_{\text{drop}} \leq 1$.
 
 By combining perturbation with Drop-AR, the diffusion decoder learns to reconstruct coherent reasoning from noisy or missing skeletons, improving robustness and enabling active correction of structural inconsistencies during inference.
 
