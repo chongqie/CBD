@@ -192,13 +192,11 @@ The execution stage $p_{\text{Diff}}(y \mid s, x)$ is implemented with discrete 
 Let $y_0$ denote the target sequence. We define a forward Markov process that progressively corrupts tokens into an absorbing [MASK] state. At timestep $t$, each token $y^i$ evolves independently via a transition matrix $Q_t$, gradually mapping the original token to [MASK].
 
 The independent-token assumption reduces computational cost, and the skeleton $s$ provides high-level guidance to mitigate semantic inconsistency. The forward transition distribution is:
-$$
-q(y_t^i \mid y_0^i) =
-\begin{cases}
+
+$$ q(y_t^i \mid y_0^i) = \begin{cases}
 \alpha_t, & \text{if } y_t^i = y_0^i, \\
 1 - \alpha_t, & \text{if } y_t^i = \texttt{[MASK]} .
-\end{cases}
-$$
+\end{cases} $$
 
 Here, $y_0^i \in \mathcal{V}$ is the original token, $y_t^i \in \mathcal{V} \cup \{\texttt{[MASK]}\}$ is the corrupted token, and $\alpha_t \in [0,1]$ is a globally shared noise schedule controlling the retention probability of the original token at step $t$.
 
@@ -206,14 +204,12 @@ Here, $y_0^i \in \mathcal{V}$ is the original token, $y_t^i \in \mathcal{V} \cup
 **Structure-Guided Denoising.**
 We use a neural network $f_\theta(y_t, x, s)$ to parameterize the conditional reverse distribution. Training maximizes the Evidence Lower Bound (ELBO), which under discrete masking diffusion reduces to minimizing cross-entropy over masked tokens at each step:
 
-$$
-\mathcal{L}_{\text{diff}}=
+$$ \mathcal{L}_{\text{diff}}=
 \mathbb{E}_{t,\, y_0}
 \left[
 \sum_{i \in \mathcal{M}_t}
 - \log p_\theta\!\left(y_0^i \mid y_t, x, s\right)
-\right],
-$$
+\right], $$
 
 where $t$ is a uniformly sampled diffusion step, $y_0$ is the ground-truth sequence, and $\mathcal{M}_t = \{ i \mid y_t^i = \texttt{[MASK]} \}$ are the masked positions. The conditional $p_\theta(y_0^i \mid y_t, x, s)$, predicted independently at each masked token, is parameterized by the denoising network.
 
