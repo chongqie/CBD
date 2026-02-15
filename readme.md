@@ -208,12 +208,7 @@ We use a neural network $f_\theta(y_t, x, s)$ to parameterize the conditional re
 
 
 $$
-\mathcal{L} _ {\text{diff}} =
-\mathbb{E} _ {t,\, y_0}
-\left[
-\sum _ {i \in \mathcal{M} _ t}
-- \log p _ \theta\!\left(y_0 ^ i \mid y_t, x, s\right)
-\right]
+\mathcal{L}_{\text{diff}} = \mathbb{E}_{t, y_0} \left[ \sum_{i \in \mathcal{M}_t} -\log p_\theta\!\left(y_0^i \mid y_t, x, s\right) \right]
 $$
 
 
