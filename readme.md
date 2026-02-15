@@ -213,7 +213,7 @@ $$
 
 
 
-where $t$ is a uniformly sampled diffusion step, $y_0$ is the ground-truth sequence, and $\mathcal{M}_t = \{ i \mid y_t^i = \texttt{[MASK]} \}$ are the masked positions. The conditional $p_\theta(y_0^i \mid y_t, x, s)$, predicted independently at each masked token, is parameterized by the denoising network.
+where $t$ is a uniformly sampled diffusion step, $y_0$ is the ground-truth sequence, and $\mathcal{M}_t = \{ i \mid y_t^i = \texttt{[MASK]} \}$ are the masked positions. The conditional $`p_\theta(y_0^i \mid y_t, x, s)`$, predicted independently at each masked token, is parameterized by the denoising network.
 
 Conditioning on $s$ constrains the denoising space. Without $s$, $p(y \mid y_t, x)$ admits many valid continuations, increasing uncertainty. With $s$, probability mass concentrates on trajectories consistent with the high-level structure encoded in the skeleton.
 
