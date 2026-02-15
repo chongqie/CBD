@@ -10,7 +10,8 @@ To overcome the limitations of serial generation, discrete diffusion language mo
 
 To balance the fundamental trade-off between inference efficiency and generation quality, we propose a novel hybrid framework, i.e., **Crossed-Block Diffusion (CBD)**. Our core insight lies in decoupling the high-level reasoning process into two distinct phases: Planning and execution. Specifically, we employ a lightweight AR model as a planner to generate sparse yet logically coherent semantic skeletons. Subsequently, a diffusion model acts as an executor, populating high-dimensional textual details in parallel under global skeletal constraints. This design effectively synthesizes the logical coherence of AR models with the local parallel efficiency of diffusion models, realizing a paradigm of global serial planning, local parallel execution.
 
-!(fig1.png)
+![demo](fig1.png)
+
 
 The primary challenge in realizing this hybrid paradigm lies in the training-inference distribution shift. During training, the model is conditioned on ground truth skeletons, whereas during inference it relies on skeletons predicted by an autoregressive model, which inevitably contain noise or errors. Strict dependence on imperfect drafts can lead to progressive error accumulation. To address this issue, we propose a robust training strategy called Drop-AR, which incorporates noise injection and dynamic conditional dropout. These mechanisms collectively improve the model’s robustness to imperfect drafts and help maintain logical consistency during inference.
 
