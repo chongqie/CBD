@@ -168,10 +168,9 @@ For training data construction, we build a structured, coarse-grained reasoning 
 Autoregressive models capture sequential dependencies well, but token-by-token generation incurs linear latency, limiting scalability for complex reasoning. To mitigate this, we model reasoning as a hierarchical latent process by introducing an explicit structural variable $s$ that decouples high-level planning from low-level execution. The semantic skeleton $s$ abstracts surface details while preserving the core logical trajectory.
 
 Given input $x$ and target sequence $y$, we factorize the joint distribution as:
+
 $$
-p(y, s \mid x)
-=
-\underbrace{p_{\text{AR}}(s \mid x; \phi)}_{\text{Planning (Serial)}}
+p(y, s \mid x)=\underbrace{p_{\text{AR}}(s \mid x; \phi)}_{\text{Planning (Serial)}}
 \cdot
 \underbrace{p_{\text{Diff}}(y \mid s, x; \theta)}_{\text{Execution (Parallel)}} .
 $$
