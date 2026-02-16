@@ -17,7 +17,7 @@ The primary challenge in realizing this hybrid paradigm lies in the training-inf
 
 To fully leverage parallel computation, we formalize the generation process as confidence based block parallel decoding. Instead of applying uniform denoising, the sequence is divided into semantic blocks according to the model's local confidence, guided by the structural priors provided by the skeleton. This hierarchical scheduling approach helps achieve higher GPU utilization,  while ensuring that generation proceeds from macro structures to micro-level details, respecting semantic dependencies.
 
-We conduct extensive evaluations of CBD on mathematical reasoning benchmarks such as GSM8K and MATH500, as well as on general reasoning tasks including HellaSwag. Empirical results demonstrate that CBD consistently outperforms non-parallel baselines, achieving accuracy improvements of up to 24.7% while simultaneously delivering up to 3$\times$ inference acceleration. Notably, this performance gain is achieved while preserving logical accuracy comparable to strong autoregressive models. These results confirm the promise of the hybrid paradigm for low-latency, high-precision reasoning.
+We conduct extensive evaluations of CBD on mathematical reasoning benchmarks such as GSM8K and MATH500, as well as on general reasoning tasks including HellaSwag. Empirical results demonstrate that CBD consistently outperforms non-parallel baselines, achieving accuracy improvements of up to 24.7% while simultaneously delivering up to 3$` \times `$ inference acceleration. Notably, this performance gain is achieved while preserving logical accuracy comparable to strong autoregressive models. These results confirm the promise of the hybrid paradigm for low-latency, high-precision reasoning.
 
 Our main contributions are summarized as follows:
 - We propose the **CBD** framework, which effectively combines the logical strengths of autoregressive models with the parallel efficiency of diffusion models through a skeleton planning and parallel filling mechanism.
@@ -184,7 +184,7 @@ Here, a lightweight autoregressive model $p_{\text{AR}}(s \mid x; \phi)$ generat
 
 In our framework, the skeleton $s$ compactly represents the high-level logical structure of reasoning, serving as a semantic scaffold for parallel execution. It includes a summary of the global trajectory and a sequence of coarse-grained reasoning steps capturing key intermediate actions, while abstracting surface details. This task-agnostic representation links serial planning with parallel execution across datasets.
 
-A lightweight autoregressive model $`\mathcal{M}_{\text{AR}}`$ parameterizes $p_\phi(s \mid x)$ to generate $s$. Typical skeletons contain 3--6 steps (average $\sim 3.34$) with summaries and steps spanning dozens to over a hundred tokens (average $\sim 81.2$). Since $|s| \ll |y|$, serial planning is efficient, and the diffusion-based execution stage refines the skeleton in parallel to produce the final reasoning sequence.
+A lightweight autoregressive model $`\mathcal{M}_{\text{AR}}`$ parameterizes $p_\phi(s \mid x)$ to generate $s$. Typical skeletons contain 3~6 steps (average $\sim 3.34$) with summaries and steps spanning dozens to over a hundred tokens (average $\sim 81.2$). Since $|s| \ll |y|$, serial planning is efficient, and the diffusion-based execution stage refines the skeleton in parallel to produce the final reasoning sequence.
 
 #### Draft-Conditioned Discrete Diffusion
 
