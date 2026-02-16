@@ -184,7 +184,7 @@ Here, a lightweight autoregressive model $p_{\text{AR}}(s \mid x; \phi)$ generat
 
 In our framework, the skeleton $s$ compactly represents the high-level logical structure of reasoning, serving as a semantic scaffold for parallel execution. It includes a summary of the global trajectory and a sequence of coarse-grained reasoning steps capturing key intermediate actions, while abstracting surface details. This task-agnostic representation links serial planning with parallel execution across datasets.
 
-A lightweight autoregressive model $`\mathcal{M}_{\text{AR}}`$ parameterizes $p_\phi(s \mid x)$ to generate $s$. Typical skeletons contain 3~6 steps (average $\sim 3.34$) with summaries and steps spanning dozens to over a hundred tokens (average $\sim 81.2$). Since $|s| \ll |y|$, serial planning is efficient, and the diffusion-based execution stage refines the skeleton in parallel to produce the final reasoning sequence.
+A lightweight autoregressive model $`\mathcal{M}_{\text{AR}}`$ parameterizes $p_\phi(s \mid x)$ to generate $s$. Typical skeletons contain 3~6 steps (average $\sim 3.34$ ) with summaries and steps spanning dozens to over a hundred tokens (average $\sim 81.2$). Since $|s| \ll |y|$, serial planning is efficient, and the diffusion-based execution stage refines the skeleton in parallel to produce the final reasoning sequence.
 
 #### Draft-Conditioned Discrete Diffusion
 
