@@ -1,4 +1,4 @@
-
+![demo](CBD.jpg)
 # Cross-dLLM: Cross-Block Diffusion Decoding with Auto-Regressive Drafting for Complex Reasoning
 
 
