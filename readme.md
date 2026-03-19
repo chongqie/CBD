@@ -38,7 +38,6 @@ Root Directory
 │
 ├── eval_llada.py                  # LLaDA Model Evaluation Script
 ├── eval_llada_stepwise.py         # LLaDA Model Stepwise Evaluation Script
-├── ft_llada_final.py              # LLaDA Model Fine-tuning Script (Final Version)
 ├── generate.py                    # Text Generation Script
 ├── generate_parallel.py           # Parallel Text Generation Script
 └── readme.md                      # Project Documentation
